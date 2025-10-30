@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Julia Baucher — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --primary-color: #ffffff; /* Headings & bullet points in bright white */
+  --primary-light: #ffffff; /* Hover/accent remains bright white */
+  --primary-dark: #ffffff;  /* Strong white for headings */
+
+  --text-primary: #e6e6e6;  /* Main body text - softer white */
+  --text-primary-hover: #ffffff; /* Brighter on hover */
+  --text-secondary: #c9c9c9; /* Secondary info text */
+  --text-on-primary: #000000; /* Text on colored/gradient backgrounds */
+
+  --background: #000000; /* Page background */
+  --surface: #121212; /* Card background */
+  --surface-hover: #1e1e1e; /* Slightly lighter grey for card hover */
+
+  --border: #2e2e2e; /* Same subtle border for normal & hover */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.6);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.6);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.6);
+
+  --gradient-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--background);
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cv-content {
+  background: rgba(31, 31, 31, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(64, 64, 64, 0.3);
+  margin-top: 1rem;
+}
+
+/* Language Selector */
+.language-selector-container {
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#language-selector {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  font-family: 'Inter', sans-serif;
+}
+
+#language-selector:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+}
+
+#language-selector:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 2.5rem 0 1.5rem 0;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--primary-light);
+}
+
+/* Contact Section */
+.contact {
+  background: var(--gradient-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2.5rem;
+  /*border: 1px solid rgba(96, 165, 250, 0.2);*/
+}
+
+.contact p {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact p:last-child {
+  margin-bottom: 0;
+}
+
+.contact a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.contact a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.contact a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Sections */
+section { margin-bottom: 3rem; }
+section:last-child { margin-bottom: 0; }
+
+/* Experience/Education Items */
+.experience-item, .education-item {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Hover Effect */
+.experience-item:hover, .education-item:hover, .award-item:hover, .skills-category:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.experience-item:last-child, .education-item:last-child { margin-bottom: 0; }
+
+.job-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Lists */
+ul { list-style: none; margin-left: 0; padding-left: 0; }
+
+li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+li::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.75rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary-color);
+  transform: rotate(45deg);
+}
+
+li:last-child { margin-bottom: 0; }
+
+/* Awards */
+.awards-grid { display: grid; gap: 1rem; margin-top: 1rem; }
+
+.award-item {
+  background: var(--surface);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+/* Skills */
+.skills-category {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.skills-category:last-child { margin-bottom: 0; }
+
+.skills-title { font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem; }
+.skills-content { color: var(--text-secondary); line-height: 1.6; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container { padding: 1rem; }
+  .cv-content { padding: 2rem 1.5rem; border-radius: 12px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.25rem; }
+  .contact { padding: 1.5rem; }
+  .experience-item, .education-item { padding: 1.25rem; }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    background-image: none !important;
+    color: black !important;
+  }
+  .main-container { max-width: none; margin: 0; padding: 0; }
+  .cv-content { background: white !important; box-shadow: none !important; border: none !important; padding: 0; margin: 0; }
+  .language-selector-container, #cv-cbLauncher, #cv-cbOverlay, #cv-cbWindow { display: none !important; }
+  h1, h2 { color: black !important; }
+  .contact a { color: black !important; text-decoration: underline !important; }
+  .experience-item, .education-item, .skills-category, .award-item {
+    background: white !important; box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid;
+  }
+  * { color: black !important; }
+}
+
+/* Animation for content switching */
+.cv-section {
+  display: none;              /* hide non-active sections so they don't take space */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+.cv-section.active {
+  display: block;             /* only the active language section participates in layout */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================= */
+/* Chat widget (namespaced: cv-) */
+/* ============================= */
+:root {
+  --cv-cb-accent: #3b82f6;
+  --cv-cb-bg: #ffffff;
+  --cv-cb-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  --cv-cb-radius: 20px;
+  --cv-cb-z: 2147483000;
+}
+#cv-cbLauncher, #cv-cbOverlay, #cv-cbWindow { all: initial; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+.cv-cb-hidden { display: none !important; }
+
+/* Launcher button (fixed, does not create page height) */
+#cv-cbLauncher {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--cv-cb-bg);
+  box-shadow: var(--cv-cb-shadow);
+  z-index: var(--cv-cb-z);
+  cursor: pointer;
+  display: grid; place-items: center;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+#cv-cbLauncher:focus-visible { outline: 3px solid var(--cv-cb-accent); outline-offset: 2px; border-radius: 50%; }
+#cv-cbLauncher svg { width: 28px; height: 28px; }
+
+/* Place launcher bottom-center on small screens so it never blocks chat input */
+@media (max-width: 640px) {
+  #cv-cbLauncher {
+    left: 50%; right: auto; transform: translateX(-50%);
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Background overlay */
+#cv-cbOverlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: calc(var(--cv-cb-z) + 1);
+}
+
+/* Chat window (fixed, no reflow) */
+#cv-cbWindow {
+  position: fixed;
+  z-index: calc(var(--cv-cb-z) + 2);
+  display: grid;
+  grid-template-rows: auto 1fr; /* header + flexible body */
+  width: min(420px, 92vw);
+  height: min(70vh, 92vh);
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(84px, calc(env(safe-area-inset-bottom) + 84px)); /* cleared above launcher */
+  background: var(--cv-cb-bg);
+  border-radius: var(--cv-cb-radius);
+  box-shadow: var(--cv-cb-shadow);
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Header */
+#cv-cbHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+#cv-cbTitle { font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #0f172a; }
+#cv-cbClose { all: unset; cursor: pointer; display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; }
+#cv-cbClose:focus-visible { outline: 3px solid var(--cv-cb-accent); outline-offset: 2px; border-radius: 8px; }
+
+/* Chat body (native UI) */
+#cv-cbBody {
+  display:flex; flex-direction:column; height:100%; background:#fff;
+  min-height: 0; /* IMPORTANT: lets the inner scroller actually scroll inside a grid cell */
+}
+
+/* SCROLLABLE messages area — FIX */
+#cv-cbMsgs {
+  flex:1;
+  overflow-y:auto;                  /* enables scrolling */
+  -webkit-overflow-scrolling:touch; /* smooth iOS scroll */
+  overscroll-behavior:contain;      /* prevent body scroll while scrolling chat */
+  padding:12px;
+  font:14px/1.5 system-ui;
+  background:#fff; color:#111;
+  min-height: 0;                    /* ensure flex child can shrink to allow scrolling */
+}
+
+.cv-cb-bubble { margin:8px 0; display:flex; }
+.cv-cb-bubble .b {
+  max-width:85%; padding:10px 12px; border:1px solid #eee; border-radius:12px; word-wrap:break-word; white-space:pre-wrap;
+}
+.cv-cb-bubble.user { justify-content:flex-end; }
+.cv-cb-bubble.user .b { background:#111; color:#fff; }
+.cv-cb-bubble.assistant .b { background:#f8f9fb; color:#111; }
+
+#cv-cbForm { display:flex; gap:8px; border-top:1px solid #eee; padding:10px; }
+#cv-cbInput { flex:1; padding:10px; border:1px solid #ddd; border-radius:8px; font:14px system-ui; color:#111; }
+#cv-cbSend { padding:10px 14px; border-radius:8px; border:1px solid #111; background:#111; color:#fff; font:14px system-ui; cursor:pointer; }
+#cv-cbSend:disabled { opacity:.6; cursor:not-allowed; }
+
+/* Mobile: full-screen chat */
+@media (max-width: 640px), (max-height: 640px) {
+  #cv-cbWindow {
+    width: 100vw;
+    height: min(100vh, 100dvh);
+    right: 0; bottom: 0;
+    border-radius: 0;
+  }
+}
+
+/* Motion */
+@media (prefers-reduced-motion: no-preference) {
+  #cv-cbWindow { transition: transform .2s ease, opacity .2s ease; }
+  #cv-cbWindow[data-state="enter"] { transform: translateY(8px); opacity: 0; }
+  #cv-cbWindow[data-state="open"]  { transform: translateY(0);   opacity: 1; }
+}
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="language-selector-container">
+      <select id="language-selector">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+
+    <div class="cv-content">
+      <!-- ENGLISH CV -->
+      <div id="cv-en" class="cv-section active">
+        <h1>Julia Baucher</h1>
+        <div class="contact">
+          <p>📞 +33 (0)6 62 72 83 22</p>
+          <p>📧 <a href="mailto:juliabaucher.work@gmail.com">juliabaucher.work@gmail.com</a></p>
+          <p>🔗 <a href="https://linkedin.com/in/juliabaucher" target="_blank">linkedin.com/in/juliabaucher</a></p>
+          <p>🌐 <a href="https://juliabaucher.github.io/" target="_blank">juliabaucher.github.io</a></p>
+          <p>🌍 Citizenship: French</p>
+        </div>
+
+        <section>
+          <h2>Work Experience</h2>
+          <div class="experience-item">
+            <div class="job-title">Senior BI Product Manager Tech for Transportation Services — AMAZON, Luxembourg (2021–2025)</div>
+            <ul>
+              <li>Defined product vision, strategy, risks, success metrics for Logistic Optimisations webapps, ML models.</li>
+              <li>Led cross-functional development of Labor Planning & Assignment web apps, forecasting ML models, BI dashboards: roadmap, prioritization, user journeys, BRD, tech & UX design, sprints, tests, GtoM, KPI.</li>
+              <li>Built partnership: investment strategy, remote stakeholders management, status reports, SLA.</li>
+              <li>Hired and coached FTEs & interns, delivered SCRUM training ranked 4.8/5.0, organized tech events.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Product Manager & Consultant for Revenue Accounting & Finance — Amadeus, France (2013–2020)</div>
+            <ul>
+              <li>Defined product strategy, identified new opportunities, aligned priorities with airline's consortium, translated business needs into product features, executed programs for Airline's Revenue Accounting.</li>
+              <li>Run onsite consulting sessions to optimise system usage, business processes, overall user experience, monitored SLA KPI for Malaysia Airlines, Vistara, Icelandair, Luxair, Wideroe, South Africa.</li>
+              <li>Conducted multiple pre-sales projects: RFP&RFI responses, workshops, live demo, value proposition.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Responsable de Produit en e-Commerce & Shopping — Amadeus, France (2006–2013)</div>
+            <ul>
+              <li>Led development of B2C airline's web and mobile applications with millions of monthly users.</li>
+              <li>Defined vision, strategy, value proposition, managed programs execution for Travel Search Engines.</li>
+              <li>Redesigned internet banking platform translating strategic objectives into a feature-based roadmap.</li>
+              <li>Built U/X portfolio for airlines website customization; conducted market research for business cases.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Research Engineer — University of Cambridge, UK (2006)</div>
+            <ul>
+              <li>Initiated a research stream in injection moulding between Ecole des Mines and Cambridge.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Data analyst — McKinsey & Company, Russia (2001)</div>
+            <ul>
+              <li>Managed marketing research and data analysis.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Awards</h2>
+          <div class="awards-grid">
+            <div class="award-item">
+              <div class="skills-title">🏆 First prize in Startup Weekend</div>
+              <div class="skills-content">eCommerce platform — GOOGLE for STARTUPS, Monaco (2017)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">🏅 Award for Excellence in Engineering</div>
+              <div class="skills-content">Computations — EMERALD PUBLISHING, UK (2008)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">🎓 Winner of international scholarship</div>
+              <div class="skills-content">PhD studies — EGIDE, France (2002)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">👩‍🔬 Award at youth Scientific Contest</div>
+              <div class="skills-content">"Step-into-the-future" — NATIONAL ACADEMY OF SCIENCE, Russia (1996)</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="education-item">
+            <div class="job-title">PhD in Computational Mechanics — Ecole des Mines de Paris, France (2006)</div>
+          </div>
+          <div class="education-item">
+            <div class="job-title">Engineer's Diploma in Mechanics — Bauman Moscow State Technical University, Russia (2002)</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Skills & Others</h2>
+          <div class="skills-category">
+            <div class="skills-title">Soft skills:</div>
+            <div class="skills-content">Strong analytical and self-learning capabilities, problem-solving, data-driven decision-making, clear and concise communication, stakeholder management, empathy.</div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-title">IT skills:</div>
+            <div class="skills-content">Python, SQL, Tableau, Quicksight, ETL, C/C++, Java, HTML, API XML, JSON; Windows, Linux, MAC; Microsoft Office, SharePoint, Camtasia, Eclipse, IntelliJ, Postman, WordPress, Jira; SAFe, Agile, Waterfall, CMMI; UX design; PCI DSS; GDPR.</div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-title">Languages:</div>
+            <div class="skills-content">Native Russian; fluent in French and English; communication skills in Spanish.</div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-title">Volunteering:</div>
+            <div class="skills-content">Participation in AFM-Telethons.</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- FRENCH CV -->
+      <div id="cv-fr" class="cv-section">
+        <h1>Julia Baucher</h1>
+
+        <div class="contact">
+          <p>📞 +33 (0)6 62 72 83 22</p>
+          <p>📧 <a href="mailto:juliabaucher.work@gmail.com">juliabaucher.work@gmail.com</a></p>
+          <p>🔗 <a href="https://linkedin.com/in/juliabaucher" target="_blank">linkedin.com/in/juliabaucher</a></p>
+          <p>🌐 <a href="https://juliabaucher.github.io/" target="_blank">juliabaucher.github.io</a></p>
+          <p>🌍 Nationalité : Française</p>
+        </div>
+
+        <section>
+          <h2>Expérience Professionnelle</h2>
+
+          <div class="experience-item">
+            <div class="job-title">Responsable de Produit Tech en Logistique — AMAZON, Luxembourg (2021–2025)</div>
+            <ul>
+              <li>Définition de stratégie produit des webapps et modèles ML pour l'optimisation logistique.</li>
+              <li>Pilotage du développement de webapps de gestion du personnel, modèles de prévision ML, tableaux de bord (Quicksight, Tableau), dans un environnement Agile et DevSecOps : définition de la roadmap produit, rédaction des user stories et critères d'acceptation, ingénieurs et experts sécurité ; conception technique et UX conforme aux standards de codage sécurisé, gestion du backlog, tests, déploiement continu avec contrôle des accès et normes RGPD.</li>
+              <li>Mise en place des partenariats avec clients : stratégie d'investissement, gouvernance, KPIs, sécurité.</li>
+              <li>Recrutement et encadrement des collaborateurs, animation de formations SCRUM (note 4,8/5).</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Responsable de Produit & Consultant — Amadeus, France (2013–2020)</div>
+            <ul>
+              <li>Gestion de développement d'un logiciel de comptabilité et d'audit pour les compagnies aériennes.</li>
+              <li>Définition de stratégie, alignement des priorités avec le consortium de compagnies aériennes.</li>
+              <li>Animation des sessions de consulting sur site pour optimiser l'utilisation du système, les processus métier, mesures de la performance (Malaysia Airlines, Icelandair, Luxair, Vistara, Widerøe).</li>
+              <li>Réalisation de projets de prévente : RFP, présentation et démos, proposition de valeur.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Responsable Produit e-Commerce & Shopping — Amadeus, France (2006–2013)</div>
+            <ul>
+              <li>Pilotage du développement de apps web et mobile pour des compagnies aériennes avec plusieurs millions d'utilisateurs mensuels (Lufthansa, Japan Airlines, LATAM,..): rédaction de cahiers des charges et spécifications, pilotage des projets, élaboration des scénarios de tests et support client.</li>
+              <li>Définition de stratégie, exécution de programmes pour les moteurs de recherche de voyages.</li>
+              <li>Refonte d'une plateforme de paiement, traduction des objectifs stratégiques en plan de projet.</li>
+              <li>Constitution d'un portefeuille UX pour la personnalisation des sites de compagnies aériennes.</li>
+              <li>Support fonctionnelle sur le marché EU, suivi des incidents, mise à jour de la documentation.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Ingénieur de Recherche — Université de Cambridge, UK (2006)</div>
+            <ul>
+              <li>Développement d'un modèle mathématique pour un phénomène physique dans le moulage par injection.</li>
+              <li>Implémentation du modèle dans le logiciel industriel (C/C++ Rem@3D, Transvalor).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Prix et Récompenses</h2>
+          <div class="awards-grid">
+            <div class="award-item">
+              <div class="skills-title">🏆 1er prix Startup WE</div>
+              <div class="skills-content">CCI & GOOGLE, Monaco (2017)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">🏅 Prix d'Excellence</div>
+              <div class="skills-content">EMERALD PUBLISHING, UK (2008)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">🎓 Bourse doctorale internationale</div>
+              <div class="skills-content">EGIDE, France (2002)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">👩‍🔬 Prix concours scientifique jeunesse</div>
+              <div class="skills-content">Académie des Sciences, Russie (1996)</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Formation</h2>
+          <div class="education-item">
+            <div class="job-title">Doctorat en Mécanique Numérique — École des Mines de Paris, France (2006)</div>
+          </div>
+          <div class="education-item">
+            <div class="job-title">Diplôme d'Ingénieur en Mécanique — Université Technique d'État de Moscou, Russie (2002)</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+          <div class="skills-category">
+            <div class="skills-title">Soft skills :</div>
+            <div class="skills-content">Esprit analytique, communication claire, leadership collaboratif, orientation résultats.</div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-title">Informatique :</div>
+            <div class="skills-content">Python, SQL, Tableau, Quicksight, ETL, C++, Java, HTML, API, Windows, Linux, Jira, Agile, UX, GDPR.</div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-title">Langues :</div>
+            <div class="skills-content">Français, Anglais, Russe (courants) ; Espagnol (niveau débutant)</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Language preference persistence
+    const getStoredLanguage = () => {
+      try {
+        return localStorage.getItem('cv-language') || 'en';
+      } catch (e) {
+        return 'en';
+      }
+    };
+
+    const setStoredLanguage = (lang) => {
+      try {
+        localStorage.setItem('cv-language', lang);
+      } catch (e) {
+        // localStorage not available, ignore
+      }
+    };
+
+    // Language switch functionality
+    const selector = document.getElementById('language-selector');
+    const frSection = document.getElementById('cv-fr');
+    const enSection = document.getElementById('cv-en');
+
+    // Initialize with stored preference
+    const initialLang = getStoredLanguage();
+    selector.value = initialLang;
+    switchLanguage(initialLang);
+
+    function switchLanguage(lang) {
+      if (lang === 'fr') {
+        frSection.style.display = 'block';
+        enSection.style.display = 'none';
+        frSection.classList.add('active');
+        enSection.classList.remove('active');
+        document.documentElement.lang = 'fr';
+      } else {
+        frSection.style.display = 'none';
+        enSection.style.display = 'block';
+        enSection.classList.add('active');
+        frSection.classList.remove('active');
+        document.documentElement.lang = 'en';
+      }
+    }
+
+    selector.addEventListener('change', () => {
+      const selectedLang = selector.value;
+      switchLanguage(selectedLang);
+      setStoredLanguage(selectedLang);
+    });
+  </script>
+
+  <!-- ============================ -->
+  <!-- Chatbot Integration (no BE) -->
+  <!-- ============================ -->
+  <div id="cv-cbLauncher" aria-label="Open chat" role="button" tabindex="0">
+    <!-- Minimal icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 4h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9.5l-4.2 3.5a.75.75 0 0 1-1.3-.57V15H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM7 8.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/>
+    </svg>
+  </div>
+  <div id="cv-cbOverlay" class="cv-cb-hidden" aria-hidden="true"></div>
+
+  <section id="cv-cbWindow" class="cv-cb-hidden" role="dialog" aria-label="AI chat" aria-modal="true" data-state="enter">
+    <header id="cv-cbHeader">
+      <div id="cv-cbTitle">Chat with Julia’s Assistant</div>
+      <button id="cv-cbClose" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M6.4 6.4a1 1 0 0 1 1.4 0L12 10.6l4.2-4.2a1 1 0 0 1 1.4 1.4L13.4 12l4.2 4.2a1 1 0 1 1-1.4 1.4L12 13.4l-4.2 4.2a1 1 0 0 1-1.4-1.4L10.6 12 6.4 7.8a1 1 0 0 1 0-1.4z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Native chat UI (calls secure backend API) -->
+    <div id="cv-cbBody">
+      <div id="cv-cbMsgs" aria-live="polite"></div>
+      <form id="cv-cbForm">
+        <input id="cv-cbInput" type="text" placeholder="Ask about Julia’s experience, skills, availability…" required />
+        <button id="cv-cbSend" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      // ====== Secure Backend Integration ======
+     // API key now stored securely on server side - no longer exposed to visitors
+
+      // ===========================================================================
+
+      // Accessibility + behavior
+      const d = document;
+      const launcher = d.getElementById('cv-cbLauncher');
+      const overlay  = d.getElementById('cv-cbOverlay');
+      const win      = d.getElementById('cv-cbWindow');
+      const closeBtn = d.getElementById('cv-cbClose');
+
+      function openChat() {
+        launcher.classList.add('cv-cb-hidden'); // hide launcher so it never overlaps the chat
+        overlay.classList.remove('cv-cb-hidden'); overlay.setAttribute('aria-hidden','false');
+        win.classList.remove('cv-cb-hidden'); win.dataset.state = 'open';
+        // lock background scroll without changing layout height
+        d.documentElement.style.overflow = 'hidden';
+        d.body.style.overflow = 'hidden';
+        setTimeout(() => { const i = d.getElementById('cv-cbInput'); if (i) i.focus(); }, 50);
+      }
+      function closeChat() {
+        win.classList.add('cv-cb-hidden'); win.dataset.state = 'enter';
+        overlay.classList.add('cv-cb-hidden'); overlay.setAttribute('aria-hidden','true');
+        launcher.classList.remove('cv-cb-hidden');
+        d.documentElement.style.overflow = ''; d.body.style.overflow = '';
+        launcher.focus({ preventScroll:true });
+      }
+      function trapFocus(e) {
+        if (!win.classList.contains('cv-cb-hidden')) {
+          const isTab = (e.key === 'Tab' || e.keyCode === 9);
+          const isEsc = (e.key === 'Escape' || e.keyCode === 27);
+          if (isEsc) { e.preventDefault(); closeChat(); return; }
+          if (isTab) {
+            let focusables = win.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+            focusables = Array.prototype.slice.call(focusables).filter(el => !el.hasAttribute('disabled'));
+            if (focusables.length) {
+              const first = focusables[0], last = focusables[focusables.length - 1];
+              if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+              else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+          }
+        }
+      }
+      launcher.addEventListener('click', openChat);
+      launcher.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(); }});
+      closeBtn.addEventListener('click', closeChat);
+      overlay.addEventListener('click', closeChat);
+      d.addEventListener('keydown', trapFocus, true);
+
+      // ====== Chat logic (secure backend API) ======
+      const msgsEl  = d.getElementById('cv-cbMsgs');
+      const formEl  = d.getElementById('cv-cbForm');
+      const inputEl = d.getElementById('cv-cbInput');
+      const sendBtn = d.getElementById('cv-cbSend');
+
+      // System prompt (concise CV summary)
+      const SYSTEM_PROMPT = `You are Julia Baucher’s AI assistant for recruiters.
+Speak as Julia: professional, concise, friendly. Offer links or details if helpful.
+Key facts:
+- Senior BI Product Manager (Amazon, 2021–2025): logistics optimization webapps, forecasting ML, BI dashboards; roadmap, UX, sprints, KPIs. SCRUM training (4.8/5).
+- Product Manager & Consultant (Amadeus, 2013–2020): Airline Revenue Accounting; on-site consulting (Malaysia Airlines, Vistara, Icelandair, Luxair, Widerøe); pre-sales.
+- Earlier: e-commerce product; research at University of Cambridge; data analyst at McKinsey.
+Education: PhD École des Mines de Paris. Languages: RU native; FR/EN fluent; ES basic.
+Answer in the user’s language when possible. If unsure, ask a clarifying question first.`;
+
+      const history = [{ role: 'system', content: SYSTEM_PROMPT }];
+
+      function addBubble(role, text) {
+        const wrap = d.createElement('div');
+        wrap.className = `cv-cb-bubble ${role}`;
+        const b = d.createElement('div');
+        b.className = 'b';
+        b.textContent = text;
+        wrap.appendChild(b);
+        msgsEl.appendChild(wrap);
+        // Always keep newest message in view; users can still scroll up
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+      }
+
+      // Greet once chat opens
+      let greeted = false;
+      function greetIfNeeded() {
+        if (!greeted) {
+          addBubble('assistant', 'Hi! I’m Julia’s AI assistant. How can I help?');
+          greeted = true;
+        }
+      }
+      launcher.addEventListener('click', greetIfNeeded);
+
+      formEl.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userText = inputEl.value.trim();
+        if (!userText) return;
+
+        addBubble('user', userText);
+        history.push({ role: 'user', content: userText });
+        inputEl.value = '';
+        inputEl.disabled = true;
+        sendBtn.disabled = true;
+
+
+            try {
+
+const r = await fetch('https://97818831-d781-4fd0-8c13-97a7c01a8c7b-00-1wfe4mj21gpev.picard.replit.dev/api/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    model: 'gpt-4o-mini',
+    temperature: 0.3,
+    messages: history
+  })
+});
+
+
+          
+
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || 'Request failed');
+          const reply = data.message || '(No reply)';
+          addBubble('assistant', reply);
+          history.push({ role: 'assistant', content: reply });
+        } catch (err) {
+          console.error(err);
+          addBubble('assistant', 'Sorry—there was an error. Please try again.');
+        } finally {
+          inputEl.disabled = false;
+          sendBtn.disabled = false;
+          inputEl.focus();
+        }
+      });
+    })();
+  </script>
+
+
+ <script>
+  // Cap to N calls per day (per browser). Change N as you like.
+  const DAILY_CAP = 2;
+
+  function canMakeCall() {
+    const today = new Date().toISOString().slice(0,10);
+    const store = JSON.parse(localStorage.getItem('ai-usage') || '{}');
+    const rec = store[today] || { count: 0 };
+    return rec.count < DAILY_CAP;
+  }
+
+  function recordCall() {
+    const today = new Date().toISOString().slice(0,10);
+    const store = JSON.parse(localStorage.getItem('ai-usage') || '{}');
+    const rec = store[today] || { count: 0 };
+    rec.count += 1;
+    store[today] = rec;
+    localStorage.setItem('ai-usage', JSON.stringify(store));
+  }
+
+  async function callOpenAI(payload) {
+    if (!canMakeCall()) {
+      throw new Error(`Daily limit reached (${DAILY_CAP} calls). Try again tomorrow.`);
+    }
+    recordCall();
+    // ... proceed with your fetch to OpenAI here ...
+  }
+</script> 
+</body>
+</html>
