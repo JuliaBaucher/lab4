@@ -833,19 +833,18 @@ Answer in the user’s language when possible. If unsure, ask a clarifying quest
 
 
             try {
-
-const r = await fetch('https://97818831-d781-4fd0-8c13-97a7c01a8c7b-00-1wfe4mj21gpev.picard.replit.dev/api/chat', {
+          
+const r = await fetch('https://cgwqo234y1.execute-api.eu-north-1.amazonaws.com/prod/chat', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    model: 'gpt-4o-mini',
-    temperature: 0.3,
-    messages: history
+    message: userInput  // or whatever variable holds the user's text
   })
 });
 
 
-          
+
+
 
           const data = await r.json();
           if (!r.ok) throw new Error(data.error || 'Request failed');
