@@ -695,6 +695,9 @@ li:last-child { margin-bottom: 0; }
       switchLanguage(selectedLang);
       setStoredLanguage(selectedLang);
     });
+
+
+    
   </script>
 
   <!-- ============================ -->
@@ -838,7 +841,7 @@ const r = await fetch('https://cgwqo234y1.execute-api.eu-north-1.amazonaws.com/p
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    message: userInput  // or whatever variable holds the user's text
+    message: userText  // or whatever variable holds the user's text
   })
 });
 
@@ -848,7 +851,7 @@ const r = await fetch('https://cgwqo234y1.execute-api.eu-north-1.amazonaws.com/p
 
           const data = await r.json();
           if (!r.ok) throw new Error(data.error || 'Request failed');
-          const reply = data.message || '(No reply)';
+          const reply = data.reply || '(No reply)';
           addBubble('assistant', reply);
           history.push({ role: 'assistant', content: reply });
         } catch (err) {
