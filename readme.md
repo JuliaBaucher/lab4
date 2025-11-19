@@ -9,32 +9,33 @@ The chatbot answers questions about her profile **without exposing the OpenAI AP
 
 ## ✨ Core Features
 
-| Feature | Description |
+| Feature | Description |  
 |--------|-------------|
-| **Conversational Chatbot** | Uses GPT-4o-mini from OpenAI |
-| **Secure Back-End on AWS** | API key stored safely in Lambda (not public) |
-| **Public Frontend on GitHub Pages** | No hosting cost |
-| **CORS Protected** | Only Julia’s website can call the API |
-| **Fully Serverless** | No servers, no maintenance |
+| **Conversational Chatbot** | Uses GPT-4o-mini from OpenAI |  
+| **Secure Back-End on AWS** | API key stored safely in Lambda (not public) |  
+| **Public Frontend on GitHub Pages** | No hosting cost |  
+| **CORS Protected** | Only Julia’s website can call the API |  
+| **Fully Serverless** | No servers, no maintenance |  
 
----
+---  
 
 ## 🏛️ System Architecture (Simple + Secure)
 
-GitHub Pages (index.html)
-│
-│ fetch POST https://xxxx.execute-api.eu-north-1.amazonaws.com/prod/chat
+GitHub Pages (index.html)  
+│  
+│ fetch POST https://xxxx.execute-api.eu-north-1.amazonaws.com/prod/chat  
 
-▼
-API Gateway (HTTP API)
-▼
-AWS Lambda: JuliaBaucher_CV-backend
-│ - Validates message
-│ - Sends request to OpenAI
-│ - Returns "reply" JSON
-▼
-OpenAI API (gpt-4o-mini)
 
+▼  
+API Gateway (HTTP API)  
+▼  
+AWS Lambda: JuliaBaucher_CV-backend  
+│ - Validates message  
+│ - Sends request to OpenAI  
+│ - Returns "reply" JSON  
+▼  
+OpenAI API (gpt-4o-mini)  
+ 
 
 ---
 
@@ -257,6 +258,7 @@ Step	What to Backup
 🌍 3	API Gateway URL path /prod/chat  
 🌐 4	CORS Origin: https://juliabaucher.github.io  
 💡 5	Runtime version: Node.js 22.x  
+
 
 
 
