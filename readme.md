@@ -227,6 +227,7 @@ Headers: Content-Type
 
 In index.html, use:
 
+```
 const r = await fetch('https://XXXX.execute-api.eu-north-1.amazonaws.com/prod/chat', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -234,6 +235,7 @@ const r = await fetch('https://XXXX.execute-api.eu-north-1.amazonaws.com/prod/ch
 });
 const data = await r.json();
 addBubble('assistant', data.reply || '(No reply)');
+```
 
 🧪 Testing Guide (Non-Technical)
 Test	Expected Result
@@ -253,4 +255,5 @@ Step	What to Backup
 🌍 3	API Gateway URL path /prod/chat
 🌐 4	CORS Origin: https://juliabaucher.github.io
 💡 5	Runtime version: Node.js 22.x
+
 
