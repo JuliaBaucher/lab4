@@ -68,6 +68,7 @@ Lambda → Configuration → Environment Variables → OPENAI_API_KEY
 
 > ⚠️ Do not modify the `jsonResponse()` — it enforces CORS and is required for GitHub Pages.
 
+```javascript
 async function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
@@ -203,7 +204,7 @@ function jsonResponse(statusCode, obj) {
     body: JSON.stringify(obj),
   };
 }
-
+```
 🌐 API Gateway Configuration
 🔹 Select: HTTP API (not REST API)
 
@@ -252,3 +253,4 @@ Step	What to Backup
 🌍 3	API Gateway URL path /prod/chat
 🌐 4	CORS Origin: https://juliabaucher.github.io
 💡 5	Runtime version: Node.js 22.x
+
