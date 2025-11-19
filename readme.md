@@ -238,22 +238,25 @@ addBubble('assistant', data.reply || '(No reply)');
 ```
 
 🧪 Testing Guide (Non-Technical)
-Test	Expected Result
-Open website	Chat icon appears
-Click chat	Greeting bubble appears
-Ask a question	Answer within ~3 seconds
-Check browser console	No CORS or 500 errors
-Check CloudWatch logs	Response text visible
-Ask again	Still works (key is secure)
-💾 Backup Guidelines
+Test	Expected Result  
+Open website	Chat icon appears  
+Click chat	Greeting bubble appears  
+Ask a question	Answer within ~3 seconds  
+Check browser console	No CORS or 500 errors  
+Check CloudWatch logs	Response text visible  
+Ask again	Still works (key is secure)  
+💾 Backup Guidelines  
 
+ 
 To recreate everything if AWS is empty:
 
-Step	What to Backup
-🔑 1	Your OpenAI API key (store safely)
-💾 2	Lambda ZIP or code file (index.mjs)
-🌍 3	API Gateway URL path /prod/chat
-🌐 4	CORS Origin: https://juliabaucher.github.io
-💡 5	Runtime version: Node.js 22.x
+
+Step	What to Backup  
+🔑 1	Your OpenAI API key (store safely)  
+💾 2	Lambda ZIP or code file (index.mjs)  
+🌍 3	API Gateway URL path /prod/chat  
+🌐 4	CORS Origin: https://juliabaucher.github.io  
+💡 5	Runtime version: Node.js 22.x  
+
 
 
